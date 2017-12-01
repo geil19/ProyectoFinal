@@ -1,5 +1,6 @@
 package com.ejemplo.andres.proyectofinal;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -25,28 +26,28 @@ public class Registro extends AppCompatActivity {
 
     }
 
-    public void registrar(View v){
-        BaseDatos admin = new BaseDatos(this,"prueba9", null, 1);
+    public void alta(View v) {
+
+        BaseDatos admin = new BaseDatos(this,"prueba12", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
-        String Valor= et1.getText().toString();
-        int codigo=Integer.parseInt(Valor);
-        String nombre = et2.getText().toString();
-        String contraseña = et3.getText().toString();
-        String Valor2=et4.getText().toString();
-        int celular = Integer.parseInt(Valor2);
+        String codigo_es= et1.getText().toString();
+        String contraseña= et3.getText().toString();
+        String nombre= et2.getText().toString();
+        String telefono= et4.getText().toString();
         ContentValues registro = new ContentValues();
-        ContentValues estudiante= new ContentValues();
-        registro.put("codigo", codigo);
-        estudiante.put("nombre", nombre);
+        ContentValues estudio = new ContentValues();
+        registro.put("codigo_es", codigo_es);
         registro.put("contraseña", contraseña);
-        estudiante.put("celular", celular);
+        estudio.put("nombre", nombre);
+        estudio.put("telefono", telefono);
+
 
         //Inserta los datos en la tabla usuario
         bd.insert("login", null, registro);
-        bd.insert("estudiante",null,estudiante);
+        bd.insert("estudiante", null, estudio);
         bd.close();
         //Ponemos los campos a vacío para insertar el siguiente usuario
-        et1.setText(""); et2.setText(""); et3.setText(""); et4.setText("");
-        Toast.makeText(this, "Registro Completado", Toast.LENGTH_SHORT).show();
+        et1.setText(""); et3.setText("");
+        Toast.makeText(this, "Datos del equipo cargados", Toast.LENGTH_SHORT).show();
     }
 }

@@ -93,8 +93,8 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/celular"
         android:layout_marginEnd="21dp"
-        android:onClick="registrar"
-        android:text="REGISTRAR" />
+        android:text="REGISTRAR"
+        android:onClick="alta"/>
 
 
 </RelativeLayout>

@@ -15,8 +15,8 @@ public class BaseDatos extends SQLiteOpenHelper {
         //aquí creamos la tabla de usuario (dni, nombre, ciudad, numero)
         //db.execSQL("create table equipo(id varchar(20) primary key, estado text, sede text, sala integer)");
 
-        db.execSQL("CREATE TABLE login ( codigo_es NUMERIC NOT NULL , contraseña  NOT NULL , FOREIGN KEY (estudiante_codigo) REFERENCES estudiante(codigo), PRIMARY KEY(codigo_es))");
-        db.execSQL("CREATE TABLE estudiante ( codigo NUMERIC NOT NULL , nombre TEXT NOT NULL , direccion TEXT , telefono TEXT NOT NULL , PRIMARY KEY(codigo))");
+        db.execSQL("CREATE TABLE login ( codigo_es TEXT NOT NULL , contraseña TEXT NOT NULL , PRIMARY KEY(codigo_es))");
+        db.execSQL("CREATE TABLE estudiante ( codigo TEXT , nombre TEXT NOT NULL , telefono TEXT NOT NULL , FOREIGN KEY (codigo) REFERENCES login(codigo_es), PRIMARY KEY(codigo))");
         db.execSQL("CREATE TABLE prestamo ( cod_prestamo INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , f_ingreso TEXT NOT NULL , f_salida TEXT NOT NULL )");
         db.execSQL("CREATE TABLE equipos ( serial NUMERIC NOT NULL , marca TEXT NOT NULL , estado TEXT NOT NULL , internet TEXT NOT NULL , PRIMARY KEY(serial))");
         db.execSQL("CREATE TABLE sala ( aula INTEGER NOT NULL , equipamiento TEXT NOT NULL , PRIMARY KEY(aula))");
@@ -30,8 +30,8 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.execSQL("drop table if exists equipos");
         db.execSQL("drop table if exists sala");
         //db.execSQL("create table equipo(id integer primary key, estado text, sede text, sala integer)");
-        db.execSQL("CREATE TABLE login ( codigo_es NUMERIC NOT NULL , contraseña  NOT NULL , FOREIGN KEY (estudiante_codigo) REFERENCES estudiante(codigo), PRIMARY KEY(codigo_es))");
-        db.execSQL("CREATE TABLE estudiante ( codigo NUMERIC NOT NULL , nombre TEXT NOT NULL , direccion TEXT , telefono TEXT NOT NULL , PRIMARY KEY(codigo))");
+        db.execSQL("CREATE TABLE login ( codigo_es TEXT NOT NULL , contraseña TEXT NOT NULL , PRIMARY KEY(codigo_es))");
+        db.execSQL("CREATE TABLE estudiante ( codigo TEXT , nombre TEXT NOT NULL , telefono TEXT NOT NULL , FOREIGN KEY (codigo) REFERENCES login(codigo_es), PRIMARY KEY(codigo))");
         db.execSQL("CREATE TABLE prestamo ( cod_prestamo INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , f_ingreso TEXT NOT NULL , f_salida TEXT NOT NULL )");
         db.execSQL("CREATE TABLE equipos ( serial NUMERIC NOT NULL , marca TEXT NOT NULL , estado TEXT NOT NULL , internet TEXT NOT NULL , PRIMARY KEY(serial))");
         db.execSQL("CREATE TABLE sala ( aula INTEGER NOT NULL , equipamiento TEXT NOT NULL , PRIMARY KEY(aula))");
